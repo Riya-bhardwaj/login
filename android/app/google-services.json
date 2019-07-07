@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "41412343099",
+    "firebase_url": "https://myapp-780be.firebaseio.com",
+    "project_id": "myapp-780be",
+    "storage_bucket": "myapp-780be.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:41412343099:android:6ddfbe447682ce30",
+        "android_client_info": {
+          "package_name": "com.example.movie"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "41412343099-tm03tdan2rcbjppish4mt3l3g7kamfoe.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.movie",
+            "certificate_hash": "c6b9042bc2e4c485e922591a9ed114ff6ed26309"
+          }
+        },
+        {
+          "client_id": "41412343099-5hlsuakse1h6bl3828n2irer29cusgmn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC-qLSkThdFtdH6h5EMSLfdG2K-UiKTS8I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "41412343099-5hlsuakse1h6bl3828n2irer29cusgmn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
