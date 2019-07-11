@@ -23,18 +23,21 @@ enum FormMode { LOGIN, SIGNUP }
 FormMode _formMode = FormMode.LOGIN;
 
 
+
 class _SigninState extends State<Signin> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   bool _isLoading = false;
+
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
   final GoogleSignIn _googleSignIn = new GoogleSignIn(scopes: [
     'https://www.googleapis.com/auth/drive',
   ],
   );
 
-  Future<FirebaseUser> googlesignin() async{
+  /*Future<FirebaseUser> googlesignin() async{
     GoogleSignInAccount _googlesigninaccount=await _googleSignIn.signIn();
     GoogleSignInAuthentication _gSA= await _googlesigninaccount.authentication;
+
 
     FirebaseUser user= await _firebaseAuth.signInWithGoogle(idToken: _gSA.accessToken, accessToken:_gSA.accessToken);
 
@@ -42,10 +45,22 @@ class _SigninState extends State<Signin> {
      print('Signed in as ${user.displayName}');
 
    return user;
+  }*/
+
+
+  Future<FirebaseUser> _handleSignIn() async {
+    final GoogleSignInAccount googleUser = await _googleSignIn.signIn();
+    final GoogleSignInAuthentication googleAuth = await googleUser.authentication;
+
+    final AuthCredential credential = GoogleAuthProvider.getCredential(
+      accessToken: googleAuth.accessToken,
+      idToken: googleAuth.idToken,
+    );
+
+    final FirebaseUser user = await _firebaseAuth.signInWithCredential(credential);
+    print("signed in " + user.displayName);
+    return user;
   }
-
-
-
   void signout(){
     _googleSignIn.signOut();
     print("signed out");
@@ -154,7 +169,7 @@ class _SigninState extends State<Signin> {
                     margin: EdgeInsets.all(10.0),
                     child: RaisedButton(
                       onPressed: () {
-                        googlesignin().then((FirebaseUser user){
+                        _handleSignIn().then((FirebaseUser user){
                           print(user) ;
                         }).catchError((e){
                           print(e);
